@@ -1,0 +1,21 @@
+version: "3"
+services:
+  mongo: # service의 이름: mongoDB
+    image: "mongo:4.4.3"        # 해당 service에서 사용할 image
+    container_name: mongo       # 해당 컨테이너 이름
+    restart: always             # container를 실행할 때 항상 이미 수행 중이라면 재시작 수행
+    ports: # service port를 정의
+      - 27017:27017             # local:container
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./mongodb/data:/data
+
+  board:
+    build: ./board-server
+    container_name: board-server
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo
+

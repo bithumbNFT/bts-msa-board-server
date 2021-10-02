@@ -1,16 +1,26 @@
 package com.bts.api.board;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Component
 @Slf4j
 @SpringBootApplication
 @EnableDiscoveryClient
+@RestController
 public class BoardApplication {
+
+    @GetMapping("/test")
+    public String test(@Value("${spring.test}") String test) {
+        System.out.println(test);
+        return test;
+    }
 //    private final PostsRepository posts;
 //    private final CommentRepository comment;
 //

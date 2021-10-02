@@ -4,10 +4,6 @@ spring:
       uri: http://3.38.31.74:8888
       name: board-server
       profile: test
-management:
-  endpoints:
-    web:
-      exposure:
-        include: refresh
+
 encrypt:
   key: bts-key

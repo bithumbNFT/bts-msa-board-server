@@ -27,6 +27,7 @@ public class CommentController {
                                                       @RequestBody Comment comment) {
         //1. 댓글을 먼저 comment db 에 저장
         //2. 매핑된 url로 댓글을 등록할 post 를 찾고, post 도메인의 commentList 에 댓글을 저장한다.
+        log.debug("[CommentController] {"+p_id+"}에 댓글 작성");
         return this.commentService.save(comment)
                 .then(this.postsService.findById(p_id)
                         .flatMap(i -> {
@@ -41,6 +42,7 @@ public class CommentController {
     @RequestMapping(value = "/post/{p_id}/delete_comment", method = RequestMethod.PUT)
     public Mono<ResponseEntity<Posts>> deleteTheComment(@PathVariable(value = "p_id") String p_id,
                                         @RequestBody Comment comment) {
+        log.debug("[CommentController] {"+p_id+"}의 댓글 삭제");
         return this.postsService.findById(p_id)
                 .flatMap(i -> {
                     i.deleteCommentList(i.getCommentList(), i.getCommentList().indexOf(comment));

@@ -15,7 +15,7 @@ public class PostsServiceImpl implements PostsService{
 
     @Override
     public Flux<Posts> findAll() {
-        return postsRepository.findAll();
+        return postsRepository.findAll(Sort.by(Sort.Direction.DESC, "p_id"));
     }
     @Override
     public Mono<Posts> findById(String id) {

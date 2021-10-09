@@ -26,6 +26,7 @@ public class PostsController {
     @RequestMapping(value = "/board", method = RequestMethod.GET)
     public Flux<ResponseEntity<Posts>> getAllPosts() {
         log.info("[PostsController] 모든 게시물 전체 조회 성공");
+        System.out.println(postsService.findAll());
         return postsService.findAll()
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));

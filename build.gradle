@@ -29,7 +29,8 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-
+	//loging
+	implementation 'net.logstash.logback:logstash-logback-encoder:5.1'
 }
 
 dependencyManagement {

@@ -24,11 +24,9 @@ public class PostsController {
 
     @ApiOperation(value = "모든 게시물 전체 조회")
     @RequestMapping(value = "/board", method = RequestMethod.GET)
-    public Flux<ResponseEntity<Posts>> getAllPosts() {
+    public Flux<Posts> getAllPosts() {
         log.info("[PostsController] 모든 게시물 전체 조회 성공");
-        return postsService.findAll()
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        return postsService.findAll();
     }
 
     @ApiOperation(value = "하나의 게시물 조회")

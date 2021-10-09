@@ -31,7 +31,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	//loging
 	implementation 'net.logstash.logback:logstash-logback-encoder:5.1'
-	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin', version: '2.2.3.RELEASE'
 }
 
 dependencyManagement {
